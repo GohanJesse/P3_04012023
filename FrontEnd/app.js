@@ -13,12 +13,20 @@ appelApi
             console.log(data[0].imageUrl);
 
             for (let i = 0; i < data.length; i++) {
-            const imageElement = document.createElement("img");
-            imageElement.src = data[i].imageUrl;
-            const titreElement = document.createElement("p");
-            titreElement.innerText = data[i].title;
+            const article = document.createElement("div");
+            article.setAttribute("display", "flex");
+            article.setAttribute("flex-direction","column");
+            const newArticle = document.querySelector(".gallery");
+            newArticle.appendChild(article);
 
-            const sectionArticle = document.querySelector(".gallery");
+            const imageElement = document.createElement("img");
+            imageElement.setAttribute("crossorigin", "anonymous");
+            imageElement.src = data[i].imageUrl;
+
+            const titreElement = document.createElement("h3");
+            titreElement.innerText = data[i].title;
+            
+            const sectionArticle = document.querySelector("div");
             sectionArticle.appendChild(imageElement);
             sectionArticle.appendChild(titreElement);
             }
