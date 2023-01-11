@@ -1,34 +1,32 @@
-// Récupération des données depuis le fichier JSON
+// Récupération des données depuis le fichier JSON grâce a fetch
 
 const appelApi = fetch("http://localhost:5678/api/works");
 
+// Demande de réponse en .json
 appelApi
     .then((response) => {
         const data = response.json();
 
+        // test du renvoi des résponses dans la console
         data
         .then((data) => {
             console.log(data);
             console.log(data[0].title);
             console.log(data[0].imageUrl);
 
-            for (let i = 0; i < data.length; i++) {
-            const article = document.createElement("div");
-            article.setAttribute("display", "flex");
-            article.setAttribute("flex-direction","column");
-            const newArticle = document.querySelector(".gallery");
-            newArticle.appendChild(article);
-
-            const imageElement = document.createElement("img");
-            imageElement.setAttribute("crossorigin", "anonymous");
-            imageElement.src = data[i].imageUrl;
-
-            const titreElement = document.createElement("h3");
-            titreElement.innerText = data[i].title;
+            // Création d'une boucle pour l'affichage de chaque élément dans le length
             
-            const sectionArticle = document.querySelector("div");
-            sectionArticle.appendChild(imageElement);
-            sectionArticle.appendChild(titreElement);
+            for (let i=0; i<data.length; i++) {
+                // Création d'un élément pour le départ
+                const figure = document.createElement("figure")
+                // Affichage des travaux récupérés
+                figure.innerHTML = `
+                    <img src="${data[i].imageUrl}" alt="${data[i].title}" crossorigin="anonymous">
+                    <figcaption>${data[i].title}</figcaption>
+                `
+                // Rattachement au block parent
+                const galleryEl = document.querySelector(".gallery")
+                galleryEl.appendChild(figure)
             }
         })
     })
