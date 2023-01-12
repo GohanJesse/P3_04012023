@@ -3,6 +3,17 @@
    License: none (public domain)
 */
 
+/* générale */
+
+.flexCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+/***********************************/
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -101,6 +112,8 @@ li:hover {
 #introduction {
 	display: flex;
 	align-items: center;
+	margin-bottom: 90px;
+	margin-top: 139px;
 }
 #introduction figure {
 	flex: 1
@@ -123,8 +136,59 @@ li:hover {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
+	/* margin-bottom: 1em; */
 }
+
+/* Filters */
+
+.filters {
+	height: 139px;
+	grid-gap: 10px;
+}
+
+.btn_filters {
+	border: solid #1D6154 1px;
+	border-radius: 25px;
+	color: #1D6154;
+	height: 37px;
+	padding: 9px 0 9px 0;
+	cursor: pointer;
+}
+
+.btn_filters:hover {
+	background: #1D6154;
+	color: #ffffff;
+}
+
+.all_filter {
+	padding: 0 29px 0 29px;
+}
+
+.object_filter {
+	padding: 0 21px 0 21px;
+}
+
+.apartment_filter {
+	padding: 0 14px 0 14px;
+}
+
+.restaurant_filter {
+	padding: 0 10px 0 10px;
+}
+
+
+
+.btn_filters span {
+	font-family: 'Syne';
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 19px;
+}
+
+
+
+/* Gallery */
+
 .gallery {
 	width: 100%;
 	display: grid;
