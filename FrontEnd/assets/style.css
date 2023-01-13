@@ -44,6 +44,7 @@ body {
 }
 ol, ul {
 	list-style: none;
+	cursor: pointer;
 }
 blockquote, q {
 	quotes: none;
@@ -172,11 +173,9 @@ li:hover {
 	padding: 0 14px 0 14px;
 }
 
-.restaurant_filter {
+.hotel_restaurant_filter {
 	padding: 0 10px 0 10px;
 }
-
-
 
 .btn_filters span {
 	font-family: 'Syne';
@@ -184,8 +183,6 @@ li:hover {
 	font-weight: 700;
 	line-height: 19px;
 }
-
-
 
 /* Gallery */
 
