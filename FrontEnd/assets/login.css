@@ -1,0 +1,152 @@
+/* General */
+body {
+	max-width: 1140px;
+	margin:auto;
+	font-family: 'Work Sans' ;
+	font-size: 14px;
+}
+.flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex {
+    display: flex;
+}
+.column {
+    flex-direction: column;
+}
+
+/* Header */
+header {
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0
+}
+h1{
+	display: flex;
+	flex-direction: column;
+	font-family: 'Syne';
+	font-size: 22px;
+	font-weight: 800;
+	color: #B1663C
+}
+h1 > span {
+	font-family: 'Work Sans';
+	font-size:10px;
+	letter-spacing: 0.1em;
+;
+}
+h2{
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 30px;
+	color: #1D6154
+}
+nav ul {
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+}
+nav li {
+	padding: 0 20px;
+	font-size: 16px;
+    cursor: pointer;
+}
+nav li a {
+    /* text-decoration: none; */
+	color: inherit;
+    text-decoration: none;
+}
+li:hover {
+	color: #000000;
+    font-weight: 600;
+}
+li:active {
+    font-weight: 600;
+}
+li:active:after {
+    font-weight: 600;
+}
+
+/* loginForm */
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    flex-direction: column;
+    padding: 80px 0 300px 0;
+    margin: 50px 0
+}
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 50px;
+    width: 50%;
+}
+form div {
+    width: 66%;
+    align-items: flex-start;
+}
+form div input {
+    width: 100%;
+}
+.login_form {
+	width: 50%;
+	margin: auto;
+}
+.login_form > * {
+	text-align: center;
+
+}
+.login_form h2{
+	margin-bottom: 20px;
+}
+.login_form form {
+	text-align: left;
+	margin-top:30px;
+	display: flex;
+	flex-direction: column;
+}
+.login_form input {
+    height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.login_form label {
+	margin: 28px 0 7px 0;
+    font-family: 'Work Sans';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3D3D3D;
+}
+input[type="submit"]{
+	font-family: 'Syne';
+	height: 36px;
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
+    cursor: pointer;
+}
+form a {
+    color: #3D3D3D;
+    font-family: 'Work Sans';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+/* Footer */
+footer nav ul {
+	display: flex;
+	justify-content: flex-end;
+	margin: 2em
+}
