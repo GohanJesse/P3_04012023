@@ -11,7 +11,6 @@
 	align-items: center;
 }
 
-
 /***********************************/
 
 html, body, div, span, applet, object, iframe,
@@ -34,6 +33,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -58,6 +58,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 /** end reset css**/
 body {
 	max-width: 1140px;
@@ -73,7 +74,6 @@ header {
 section {
 	margin: 50px 0
 }
-
 h1{
 	display: flex;
 	flex-direction: column;
@@ -82,14 +82,12 @@ h1{
 	font-weight: 800;
 	color: #B1663C
 }
-
 h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
 ;
 }
-
 h2{
 	font-family: 'Syne';
 	font-weight: 700;
@@ -106,10 +104,49 @@ nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
-
-li:hover {
-	color: #B1663C;
+nav li a {
+	text-decoration: none;
+	color: inherit;
 }
+li:hover {
+	color: #000000;
+    font-weight: 600;
+}
+li:active:after {
+    font-weight: 600;
+}
+
+/* Barre d'admin */
+.admin_bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 20px;
+    background: black;
+    height: 59px;
+    width: 100%;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+}
+.admin_bar button {
+    height: 38px;
+    width: 261px;
+    background: #FFFFFF;
+    border-radius: 60px;
+    font-family: "Work Sans";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+/* Introduction */
 #introduction {
 	display: flex;
 	align-items: center;
@@ -124,29 +161,41 @@ li:hover {
 	margin: auto;
 	width: 80%;
 }
-
+#introduction figure .modification {
+    padding: 15px 55px 0 55px;
+}
 #introduction article {
-	flex: 1
+	flex: 1;
+    height: 305px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 #introduction h2 {
 	margin-bottom: 1em;
 }
-
 #introduction p {
 	margin-bottom: 0.5em;
+    width: 70%;
+    text-align: justify;
 }
 #portfolio h2 {
 	text-align: center;
 	/* margin-bottom: 1em; */
 }
 
-/* Filters */
+/* Projets */
+.header_portfolio {
+    grid-gap: 30px;
+}
 
+
+/* Filters */
 .filters {
 	height: 139px;
 	grid-gap: 10px;
 }
-
 .btn_filters {
 	border: solid #1D6154 1px;
 	border-radius: 25px;
@@ -155,28 +204,22 @@ li:hover {
 	padding: 9px 0 9px 0;
 	cursor: pointer;
 }
-
 .btn_filters:hover {
 	background: #1D6154;
 	color: #ffffff;
 }
-
 .all_filter {
 	padding: 0 29px 0 29px;
 }
-
 .object_filter {
 	padding: 0 21px 0 21px;
 }
-
 .apartment_filter {
 	padding: 0 14px 0 14px;
 }
-
 .hotel_restaurant_filter {
 	padding: 0 10px 0 10px;
 }
-
 .btn_filters span {
 	font-family: 'Syne';
 	font-size: 16px;
@@ -185,7 +228,6 @@ li:hover {
 }
 
 /* Gallery */
-
 .gallery {
 	width: 100%;
 	display: grid;
@@ -193,11 +235,301 @@ li:hover {
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 }
-
 .gallery img {
 	width: 100%;
 
 }
+
+/* bouton ouverture modal */
+.edit_mode, .edit_mode a {
+    color: white;
+    font-family: "Work Sans";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+
+}
+.modification {
+    display: flex;
+    align-items: center;
+    grid-gap: 11px;
+}
+.modification i {
+    cursor: pointer;
+}
+.modification a  {
+    text-decoration: none;
+    color: black;
+    font-family: "Work Sans";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+
+}
+
+
+/**  Modal **/
+
+.modal_supp h1, .modal_add h1 {
+    font-family: "Work Sans";
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: black;
+}
+.modal_add, .modal_supp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal de suppression */
+
+.supp_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: solid black 1px;
+    border-radius: 10px;
+    width: 450px;  
+    background: #FFFFFF;
+    height: 525px;
+    padding: 30px;
+}
+.header_supp {
+    /* height: 60px; */
+    width: 100%;
+    display: flex;
+    /* justify-content: ; */
+    padding: 32px 36px 15px O;
+}
+.modal_gallery {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 8px;
+	grid-row-gap: 6px;
+    
+}
+.modal_gallery figure {
+    width: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    grid-gap: 2px;
+}
+.modal_gallery img {
+    width: 62px;
+}
+.modal_gallery figcaption {
+    width: 100%;
+    font-family: Work Sans;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: start;
+
+}
+.modal_supp_controler {
+    width: 66%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-top: solid #B3B3B3 1px;
+}
+.modal_supp_controler button {
+	font-family: 'Syne';
+	height: 34px;
+	font-weight: 700;
+	color: white;
+    background-color: #1D6154;
+	margin : 2em auto ;
+	width: 250px;
+	text-align: center;
+	border-radius: 60px ;
+    cursor: pointer;
+    border: none;
+}
+
+.modal_supp span {
+    color: rgba(214, 83, 83, 1);
+    font-family: "Syne";
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* bouton supression poubelle */
+.modal_gallery figure div i {
+    cursor: pointer;
+    color: white;
+}
+.modal_gallery figure div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background: black;
+    border-radius: 3px;
+    height: 17px;
+    width: 17px;
+    cursor: pointer;
+    margin-right: 4px;
+    margin-top: 4px;
+}
+
+
+/* Bouton fermeture modal */
+.fa-xmark {
+    position: relative;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+/* Bouton preview */
+.fa-arrow-left {
+    cursor: pointer;
+}
+
+/* Modal d'ajout de photo */
+.add_wrapper {
+    overflow: auto;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 525px;
+    width: 450px;
+    padding: 30px;
+    border-radius: 10px;
+    border: solid black 1px;
+}
+.header_modal_add {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+.picture {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    /* position: relative; */
+    height: 140px;
+    width: 380px;
+    background: rgba(232, 241, 246, 1);
+    border-radius: 3px;
+    
+}
+.picture img {
+    color: rgba(185, 197, 204, 0.8);
+    width: 14%;
+    opacity: 0.4;
+}
+.picture .picture_input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 31px;
+    width: 41%;
+    border-radius: 25px;
+    background: rgba(203, 214, 220, 1);
+    color: rgba(48, 102, 133, 1);
+    font-family: "Work Sans";
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0em;
+}
+.picture .picture_input input[type="file"] {
+    display: none;
+}
+.picture p {
+    font-family: "Work Sans";
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: center;
+
+}
+.add_wrapper .label_position {
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+    grid-gap: 2px
+}
+.add_wrapper label {
+    width: 100%;
+    font-family: "Work Sans";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    cursor: pointer;
+
+}
+.modal_add input {
+    height: 41px;
+    width: 100%;
+    background: #FFFFFF;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.modal_add select {
+    border: none;
+    height: 41px;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.modal_add_controler {
+    width: 66%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-top: solid #B3B3B3 1px;
+}
+.modal_add_controler button {
+    font-family: 'Syne';
+	height: 34px;
+	font-weight: 700;
+    margin : 2em auto ;
+	width: 250px;
+    border: none;
+    text-align: center;
+	border-radius: 60px ;
+    color: white;
+    background: rgba(167, 167, 167, 1);
+
+
+}
+
+/* Formulaire de contact */
 #contact {
 	width: 50%;
 	margin: auto;
@@ -215,7 +547,6 @@ li:hover {
 	display: flex;
 	flex-direction: column;
 }
-
 #contact input {
 	height: 50px;
 	font-size: 1.2em;
@@ -229,7 +560,6 @@ li:hover {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
 input[type="submit"]{
 	font-family: 'Syne';
 	font-weight: 700;
@@ -241,9 +571,9 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
+/* Footer */
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
 }
-
