@@ -11,6 +11,13 @@
 	align-items: center;
 }
 
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+}
+
 /***********************************/
 
 html, body, div, span, applet, object, iframe,
@@ -525,8 +532,38 @@ li:active:after {
 	border-radius: 60px ;
     color: white;
     background: rgba(167, 167, 167, 1);
+    cursor: pointer;
+}
 
 
+/* Message de confirmation */
+.success_action {
+    position: absolute;
+    top: center;
+    left: center;
+    padding: 30px;
+    background: #FFFFFF;
+    border: solid black 1px;
+    height: 150px;
+    width: 400px;
+    font-family: 'Syne';
+    font-size: 16px;
+    grid-gap: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+.btn-ok {
+    font-family: 'Syne';
+	height: 34px;
+	font-weight: 700;
+	color: white;
+    background-color: #1D6154;
+	margin : 2em auto ;
+	width: 250px;
+	text-align: center;
+	border-radius: 60px;
+    cursor: pointer;
+    border: none;
 }
 
 /* Formulaire de contact */
@@ -569,6 +606,7 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+    cursor: pointer;
 }
 
 /* Footer */
