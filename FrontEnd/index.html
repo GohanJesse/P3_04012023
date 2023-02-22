@@ -21,7 +21,7 @@
 		<div class="edit_mode">
 			<span>
 				<i class="fa-sharp fa-solid fa-pen-to-square"></i>
-				<a class="open_modal" href="#modal_supp">Mode édition</a>
+				<a href="#">Mode édition</a>
 			</span>
 		</div>
 		<button>publier les changements</button>
@@ -50,11 +50,11 @@
 					<span class="delete_all">Supprimer la galerie</span>
 				</div>
 			</section>
+
 		</aside>
 
 		<!-- Modal Ajout -->
-		<aside class="modal_add" id="modal_add" aria-hidden="true" aria-labelledby="title_modal_add"
-			style="display: none">
+		<aside class="modal_add" id="modal_add" aria-hidden="true" style="display: none">
 			<form class="add_wrapper js_modal_stop form_addWork" method="POST" >
 				<header class="header_modal_add">
 					<i class="fa-sharp fa-solid fa-arrow-left fa-lg"></i>
@@ -87,23 +87,28 @@
 					<button type="submit" class="submit_Work" id="submit_work" type="submit">Valider</button>
 				</div>
 			</form>
+			<!-- aria-hidden="true" style="display: none" -->
+			<div class="success_action column" >
+				<h3>Votre élément a été ajouter avec succès</h3>
+				<button class="btn-ok flexCenter">OK</button>
+			</div>
 		</aside>
 
 		<section id="introduction">
 			<figure>
 				<img src="./assets/images/sophie-bluel.png" alt="" />
 				<!-- Bouton modifier avec icon -->
-				<div class="modification modification_image" aria-hidden="true" style="display: none" id="modification">
+				<div class="modification" aria-hidden="true" style="display: none" id="modification_image">
 					<i class="fa-sharp fa-solid fa-pen-to-square fa-lg"></i>
-					<a class="open_modal" href="#modal_supp">modifier</a>
+					<a href="#">modifier</a>
 				</div>
 			</figure>
 
 			<article>
 				<!-- Bouton modifier avec icon -->
-				<div class="modification modification_article" aria-hidden="true" style="display: none" id="modification">
+				<div class="modification" aria-hidden="true" style="display: none" id="modification_article">
 					<i class="fa-sharp fa-solid fa-pen-to-square fa-lg"></i>
-					<a class="open_modal" href="#modal_supp">modifier</a>
+					<a href="#">modifier</a>
 				</div>
 			
 				<h2>Designer d'espace</h2>
@@ -117,17 +122,17 @@
 			<!-- Bouton modifier avec icon -->
 			<div class="header_portfolio flexCenter">
 				<h2>Mes Projets</h2>
-				<div class="modification modification_project" aria-hidden="true" style="display: none" id="modification">
+				<div class="modification" aria-hidden="true" style="display: none" id="modification_project">
 					<i class="fa-sharp fa-solid fa-pen-to-square fa-lg"></i>
 					<a class="open_modal" href="#modal_supp">modifier</a>
 				</div>
 			</div>
 
 			<div class="filters flexCenter">
-				<div class="all_filter btn_filters flexCenter" id="btn_filters"><span>Tous</span></div>
-				<div class="object_filter btn_filters flexCenter" id="btn_filters"><span>Objets</span></div>
-				<div class="apartment_filter btn_filters flexCenter" id="btn_filters"><span>Appartements</span></div>
-				<div class="hotel_restaurant_filter btn_filters flexCenter" id="btn_filters"><span>Hôtel & restaurants</span></div>
+				<div class="all_filter btn_filters flexCenter" id="btn_filters_all"><span>Tous</span></div>
+				<div class="object_filter btn_filters flexCenter" id="btn_filters_object"><span>Objets</span></div>
+				<div class="apartment_filter btn_filters flexCenter" id="btn_filters_appartement"><span>Appartements</span></div>
+				<div class="hotel_restaurant_filter btn_filters flexCenter" id="btn_filters_hostel"><span>Hôtel & restaurants</span></div>
 			</div>
 			<div class="gallery"></div>
 		</section>
