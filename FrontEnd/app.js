@@ -1,5 +1,3 @@
-// const apiUrl = "http://localhost:5678/api/works";
-
 // ********************** Load Works
 let loadedData = [];
 
@@ -10,7 +8,7 @@ async function loadWorks() {
   loadedData = data;
   displayWork(loadedData);
   getWorks(loadedData);
-}
+};
 
 // ********************** Display Works
 
@@ -28,7 +26,7 @@ function displayWork(data) {
     // Rattachement au block parent
     galleryEl.appendChild(figure);
   }
-}
+};
 
 // ********************** Filter Works
 
@@ -66,7 +64,7 @@ function resetBtn() {
   btnFiltersAll.style.color = "#1D6154";
   btnFiltersHostel.style.background = "#ffffff";
   btnFiltersHostel.style.color = "#1D6154";
-}
+};
 
 function filterWorks(key) {
   // en fonction du paramètre key, filtre les travaux ciblés et change la couleur du bouton
@@ -113,7 +111,7 @@ function filterWorks(key) {
     default:
       break;
   }
-}
+};
 
 loadWorks();
 
@@ -129,7 +127,7 @@ let modificationBtn = null;
 // Fonction pour la déconnection admin
 function logOut(e) {
   localStorage.clear();
-}
+};
 
 //Apparition de la barre d'admin et du bouton de modification en cas de token correct
 if (token !== null) {
@@ -157,22 +155,22 @@ if (token !== null) {
   modificationProject.removeAttribute("aria-hidden");
 } else if (token == null) {
   log.innerHTML = "login";
-}
+};
 
-// ********************** Display Modal
+// ********************** Display Modal & Edit mode
 
 function clearGallery() {
   const modalGall = document.querySelector(".modal_gallery");
   const gallery = document.querySelector(".gallery");
   modalGall.innerHTML = "";
   gallery.innerHTML = "";
-}
-
+};
 function refreshGallery() {
   clearGallery();
   loadWorks();
-}
+};
 
+// import des travaux dans la modale
 function getWorks(data) {
   const gallery = document.querySelector(".gallery");
 
@@ -204,7 +202,7 @@ function getWorks(data) {
     async function deleteElement(e) {
       // Cibler l' élément à supprimer
       let id = deleteIcon.value;
-      console.log(id);
+      // console.log(id);
 
       // Appel de la fonction fetch DELETE
       let response = await fetch("http://localhost:5678/api/works" + "/" + id, {
@@ -214,7 +212,7 @@ function getWorks(data) {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       });
-      console.log(response.status);
+      // console.log(response.status);
 
       // Conditions: Authentification, redirection et erreurs
       if (response.status === 200 || 204) {
@@ -268,7 +266,7 @@ function getWorks(data) {
   //Rattachement au block parent
   const figure = document.querySelector(".modal_gallery figure");
   figure.appendChild(moveIcon);
-}
+};
 
 // Ouverture modale de suppression
 function openModalSupp() {
@@ -281,16 +279,12 @@ function openModalSupp() {
   // Fonctionnailté, ouverture, fermeture
   modal.addEventListener("click", closeModal);
   modal.querySelector(".fa-xmark").addEventListener("click", closeModal);
-  modal
-    .querySelector(".js_modal_stop")
-    .addEventListener("click", stopPropagation);
-  modal
-    .querySelector(".open_modal_add")
-    .addEventListener("click", openModalAdd);
-}
+  modal.querySelector(".js_modal_stop").addEventListener("click", stopPropagation);
+  modal.querySelector(".open_modal_add").addEventListener("click", openModalAdd);
+};
 
 // Ouverture de la modale de D'ajout
-function openModalAdd (e) {
+function openModalAdd(e) {
   if (modal === null) return;
   e.preventDefault();
 
@@ -300,9 +294,7 @@ function openModalAdd (e) {
   modal.removeAttribute("aria-modal");
   modal.removeEventListener("click", closeModal);
   modal.querySelector(".fa-xmark").removeEventListener("click", closeModal);
-  modal
-    .querySelector(".js_modal_stop")
-    .removeEventListener("click", stopPropagation);
+  modal.querySelector(".js_modal_stop").removeEventListener("click", stopPropagation);
 
   // Cible modale de suppression
   const modalAdd = document.querySelector(".modal_add");
@@ -312,16 +304,13 @@ function openModalAdd (e) {
 
   // Fonctionnalité, retour, fermeture
   modalAdd.addEventListener("click", closeModal);
-  modal
-    .querySelector(".js_modal_stop")
-    .addEventListener("click", stopPropagation);
+  modal.querySelector(".js_modal_stop").addEventListener("click", stopPropagation);
   modal.querySelector(".fa-xmark").addEventListener("click", closeModal);
   modal.querySelector(".fa-xmark").addEventListener("click", resetForm);
   modal.querySelector(".fa-arrow-left").addEventListener("click", previewArrow);
   modal.querySelector(".fa-arrow-left").addEventListener("click", resetForm);
   modal.querySelector(".submit_Work").addEventListener("click", addWork);
-  // modal.querySelector(".submit_Work").addEventListener("click", resetForm);
-}
+};
 
 //Retour modale de suppression
 function previewArrow(e) {
@@ -339,27 +328,22 @@ function previewArrow(e) {
   modal = target;
   modal.addEventListener("click", closeModal);
   modal.querySelector(".fa-xmark").addEventListener("click", closeModal);
-  modal
-    .querySelector(".js_modal_stop")
-    .addEventListener("click", stopPropagation);
-}
+  modal.querySelector(".js_modal_stop").addEventListener("click", stopPropagation);
+};
 
 // Fermeture des modales
-function closeModal (e) {
+function closeModal(e) {
   if (modal === null) return;
   e.preventDefault();
-
+  // Fonctionnalité et disparission des modales
   modal.style.display = "none";
   modal.setAttribute("aria-hidden", "true");
   modal.removeAttribute("aria-modal");
   modal.removeEventListener("click", closeModal);
   modal.querySelector(".fa-xmark").removeEventListener("click", closeModal);
-  modal
-    .querySelector(".js_modal_stop")
-    .removeEventListener("click", stopPropagation);
+  modal.querySelector(".js_modal_stop").removeEventListener("click", stopPropagation);
   modal = null;
-}
-
+};
 const stopPropagation = function (e) {
   e.stopPropagation();
 };
@@ -376,22 +360,21 @@ function addWork() {
 
   formAddWork.addEventListener("submit", async function (event) {
     event.preventDefault();
-    console.log(event.type);
-    console.log(event.currentTarget);
+    // console.log(event.type);
+    // console.log(event.currentTarget);
     // Récupération des saisies pour la création du nouvel élément
     const inputPicture = document.getElementById("image").files[0];
-    console.log(inputPicture);
+    // console.log(inputPicture);
     const inputTitle = document.getElementById("title").value;
-    console.log(inputTitle);
+    // console.log(inputTitle);
     const inputCategorie = document.getElementById("category").value;
-    console.log(inputCategorie);
+    // console.log(inputCategorie);
 
     // Construction du formData à envoyer
     const formData = new FormData();
     formData.append("image", inputPicture);
     formData.append("title", inputTitle);
     formData.append("category", inputCategorie);
-    console.log(formData);
 
     // Appel de la fonction fetch avec toutes les informations nécessaires
     let response = await fetch("http://localhost:5678/api/works", {
@@ -406,34 +389,44 @@ function addWork() {
 
     // Récupération de la reponse de fetch "POST"
     let result = await response.json();
-    console.log(result);
+    // console.log(result);
 
     // Conditions: Authentification, redirection et erreurs
     if (response.status === 200 || 204) {
       refreshGallery();
-      previewArrow();
+      checkAction();
 
-      // alert("Ajout D'élément");
     } else if (response.status === 401 || 400) {
-      // errorCreat();
-      // alert("Action impossible");
-      console.log("error");
+      console.log("Action impossible");
     }
   });
-}
+};
 
-// Afficher la prévisualisation de l'image à télécharger
+
+// **********************    Réaction du formulaire
+
+// variable de selction des éléments
+const formAddWork = document.querySelector(".form_addWork");
+const inputElement = document.querySelector("#title");
+const selectElement = document.querySelector("#category");
+const fileInputElement = document.querySelector("#image");
+const submitButton = document.querySelector("#submit_work");
 const inputFile = document.querySelector(".file_upload");
 
+// Listener des actions des éléments du formulaire
 inputFile.addEventListener("change", readFile);
+inputElement.addEventListener("input", checkForm);
+selectElement.addEventListener("input", checkForm);
+fileInputElement.addEventListener("change", checkForm);
 
+// Afficher la prévisualisation de l'image à télécharger
 function readFile(e) {
   e.preventDefault();
 
   // Constante et fonction pour la lecture de l'image
   const reader = new FileReader();
   reader.addEventListener("load", function () {
-    preview.src = reader.result;
+    previewImage.src = reader.result;
   });
   // Lecture de l'image
   reader.readAsDataURL(inputFile.files[0]);
@@ -441,26 +434,16 @@ function readFile(e) {
   // Appararition et apparence attendue
   const picture = document.querySelector(".picture");
   const label = document.querySelector(".picture > label");
-  const preview = document.createElement("img");
-  picture.appendChild(preview);
+  const previewImage = document.createElement("img");
+
+  picture.appendChild(previewImage);
 
   label.style.opacity = "0";
-  preview.style.position = "absolute";
-  preview.style.opacity = "1";
-  preview.style.padding = "0";
-  preview.style.height = "140px";
-}
-
-// Changement de la couleur du bouton submit si le formulaire est entièrement rempli
-const inputElement = document.querySelector("#title");
-const selectElement = document.querySelector("#category");
-const fileInputElement = document.querySelector("#image");
-const submitButton = document.querySelector("#submit_work");
-
-// Ajoutez un événement "input" à chaque élément requis du formulaire
-inputElement.addEventListener("input", checkForm);
-selectElement.addEventListener("input", checkForm);
-fileInputElement.addEventListener("change", checkForm);
+  previewImage.style.position = "absolute";
+  previewImage.style.opacity = "1";
+  previewImage.style.padding = "0";
+  previewImage.style.height = "140px";
+};
 
 // Fonction pour vérifier si tous les éléments requis ont une valeur
 function checkForm() {
@@ -474,23 +457,45 @@ function checkForm() {
   } else {
     submitButton.style.backgroundColor = "";
     submitButton.style.color = "";
-  }
-}
+  };
+};
 
 // Reset du formulaire après fermeture ou retour modal
-const formAddWork = document.querySelector(".form_addWork");
-
 function resetForm() {
   formAddWork.reset();
+
   const picture = document.querySelector(".picture");
-  const preview = picture.querySelector("img");
+  const previewImage = picture.querySelector("img");
   const label = document.querySelector(".picture > label");
-  if (preview) {
-    picture.removeChild(preview);
+
+  if (previewImage) {
+    //Enlever l'image de prévisualisation
+    picture.removeChild(previewImage);
     label.style.opacity = "1";
-    preview.style.position = "";
-    preview.style.opacity = "";
-    preview.style.padding = "";
-    preview.style.height = "";
-  }
-}
+    previewImage.style.position = "";
+    previewImage.style.opacity = "";
+    previewImage.style.padding = "";
+    previewImage.style.height = "";
+  };
+};
+
+// ********************* Message de réussite lors de l'ajout d'élément
+
+let successMess = null;
+function checkAction() {
+  // Cibler l'élémént message de réussite
+  const target = document.querySelector(".success_action");
+  target.style.display = null;
+  target.removeAttribute("aria-hidden");
+  successMess = target;
+  // Fonctionnalité du bouton ok pour se rediriger
+  successMess.querySelector(".btn-ok").addEventListener("click", resetForm);
+  successMess.querySelector(".btn-ok").addEventListener("click", previewArrow);
+  successMess.querySelector(".btn-ok").addEventListener("click", closeCheckAction);
+};
+function closeCheckAction(e) {
+  e.preventDefault();
+  successMess.style.display = "none";
+  successMess.setAttribute("aria-hidden", "true");
+  successMess = null;
+};
