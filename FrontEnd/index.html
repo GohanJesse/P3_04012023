@@ -16,7 +16,7 @@
 
 <body>
 	<!-- Barre Admin-->
-	<div class="admin_bar" id="admin_bar" aria-hidden="true" style="display: none">
+	<div class="admin_bar flexCenter" id="admin_bar" aria-hidden="true" style="display: none">
 		<!--  -->
 		<div class="edit_mode">
 			<span>
@@ -40,12 +40,12 @@
 	</header>
 	<main>
 		<!-- Modal Suppression -->
-		<aside class="modal_supp" id="modal_supp" aria-hidden="true" role="modal" style="display: none">
-			<section class="supp_wrapper js_modal_stop">
+		<aside class="modal_supp flexCenter" id="modal_supp" aria-hidden="true" role="modal" style="display: none">
+			<section class="supp_wrapper flex column js_modal_stop">
 				<i class="fa-solid fa-xmark fa-lg"></i>
 				<h1 class="title_modal_supp">Galerie photo</h1>
 				<div class="modal_gallery"></div>
-				<div class="modal_supp_controler">
+				<div class="modal_supp_controler flex column">
 					<button class="open_modal_add" id="open_modal_add">Ajouter une photo</button>
 					<span class="delete_all">Supprimer la galerie</span>
 				</div>
@@ -54,21 +54,21 @@
 		</aside>
 
 		<!-- Modal Ajout -->
-		<aside class="modal_add" id="modal_add" aria-hidden="true" style="display: none">
-			<form class="add_wrapper js_modal_stop form_addWork" method="POST" >
-				<header class="header_modal_add">
+		<aside class="modal_add flexCenter" id="modal_add" aria-hidden="true" style="display: none">
+			<form class="add_wrapper flex column js_modal_stop form_addWork" method="POST" >
+				<header class="header_modal_add flex">
 					<i class="fa-sharp fa-solid fa-arrow-left fa-lg"></i>
 					<i class="fa-solid fa-xmark fa-lg"></i>
 				</header>
 				<h1 class="title_modal_add">Ajout photo</h1>
 
-				<div class="picture" id="Upload_img">
-					<img src="assets/icons/image.png" alt="logo image" />
-					<label class="picture_input">+ Ajout photo<input class="file_upload" id="image" name="file_upload" type="file" accept=".jpg, .png" required/></label>
+				<div class="picture flex column" id="Upload_img">
+					<img src="assets/icons/image.png" alt="logo image" id="logo_image"/>
+					<label class="picture_input flexCenter">+ Ajout photo<input class="file_upload" id="image" name="file_upload" type="file" accept=".jpg, .png" required/></label>
 					<p>jpg, png: 4mo max</p>
 				</div>
 
-				<div class="label_position">
+				<div class="label_position flex column">
 					<label for="title_picture">Titre</label>
 					<input type="text" id="title" name="title_picture" required />
 				</div>
@@ -77,36 +77,36 @@
 					<label for="category">Catégorie</label>
 					<select name="modal_category" id="category" required>
 						<option value=""></option>
-						<option name="object" id="object_option" value="1">objet</option>
-						<option name="Apartement" id="Apartement_option" value="2">Appartement</option>
-						<option name="hotel_restaurant" id="hotel_restaurant_option" value="3">hôtel & restaurant</option>
+						<option id="object_option" value="1">objet</option>
+						<option id="Apartement_option" value="2">Appartement</option>
+						<option id="hotel_restaurant_option" value="3">hôtel & restaurant</option>
 					</select>
 				</div>
 
-				<div class="modal_add_controler">
-					<button type="submit" class="submit_Work" id="submit_work" type="submit">Valider</button>
+				<div class="modal_add_controler flex column">
+					<button type="submit" class="submit_Work" id="submit_work">Valider</button>
 				</div>
 			</form>
 			<!-- aria-hidden="true" style="display: none" -->
-			<div class="success_action column" >
+			<div class="success_action column" aria-hidden="true" style="display: none">
 				<h3>Votre élément a été ajouter avec succès</h3>
 				<button class="btn-ok flexCenter">OK</button>
 			</div>
 		</aside>
 
-		<section id="introduction">
+		<section class="flex" id="introduction">
 			<figure>
 				<img src="./assets/images/sophie-bluel.png" alt="" />
 				<!-- Bouton modifier avec icon -->
-				<div class="modification" aria-hidden="true" style="display: none" id="modification_image">
+				<div class="modification flex" aria-hidden="true" style="display: none" id="modification_image">
 					<i class="fa-sharp fa-solid fa-pen-to-square fa-lg"></i>
 					<a href="#">modifier</a>
 				</div>
 			</figure>
 
-			<article>
+			<article class="flex column">
 				<!-- Bouton modifier avec icon -->
-				<div class="modification" aria-hidden="true" style="display: none" id="modification_article">
+				<div class="modification flex" aria-hidden="true" style="display: none" id="modification_article">
 					<i class="fa-sharp fa-solid fa-pen-to-square fa-lg"></i>
 					<a href="#">modifier</a>
 				</div>
@@ -122,7 +122,7 @@
 			<!-- Bouton modifier avec icon -->
 			<div class="header_portfolio flexCenter">
 				<h2>Mes Projets</h2>
-				<div class="modification" aria-hidden="true" style="display: none" id="modification_project">
+				<div class="modification flex" aria-hidden="true" style="display: none" id="modification_project">
 					<i class="fa-sharp fa-solid fa-pen-to-square fa-lg"></i>
 					<a class="open_modal" href="#modal_supp">modifier</a>
 				</div>
@@ -141,7 +141,7 @@
 		<section id="contact">
 			<h2>Contact</h2>
 			<p>Vous avez un projet ? Discutons-en !</p>
-			<form action="#" method="post">
+			<form class="flex column" action="#" method="post">
 				<label for="name">Nom</label>
 				<input type="text" name="name" id="name" />
 				<label for="email">Email</label>
@@ -155,7 +155,7 @@
 
 	<footer>
 		<nav>
-			<ul>
+			<ul class="flex">
 				<li>Mentions Légales</li>
 			</ul>
 		</nav>
