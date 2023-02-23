@@ -10,12 +10,11 @@
 	justify-content: center;
 	align-items: center;
 }
-
-.column {
+.flex {
     display: flex;
+}
+.column {
     flex-direction: column;
-    align-items: center;
-    justify-content: center ;
 }
 
 /***********************************/
@@ -125,9 +124,6 @@ li:active:after {
 
 /* Barre d'admin */
 .admin_bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     grid-gap: 20px;
     background: black;
     height: 59px;
@@ -152,10 +148,8 @@ li:active:after {
     cursor: pointer;
 }
 
-
 /* Introduction */
 #introduction {
-	display: flex;
 	align-items: center;
 	margin-bottom: 90px;
 	margin-top: 139px;
@@ -174,8 +168,6 @@ li:active:after {
 #introduction article {
 	flex: 1;
     height: 305px;
-    display: flex;
-    flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
 }
@@ -189,7 +181,6 @@ li:active:after {
 }
 #portfolio h2 {
 	text-align: center;
-	/* margin-bottom: 1em; */
 }
 
 /* Projets */
@@ -244,7 +235,6 @@ li:active:after {
 }
 .gallery img {
 	width: 100%;
-
 }
 
 /* bouton ouverture modal */
@@ -256,10 +246,8 @@ li:active:after {
     line-height: 19px;
     letter-spacing: 0em;
     text-align: center;
-
 }
 .modification {
-    display: flex;
     align-items: center;
     grid-gap: 11px;
 }
@@ -275,12 +263,10 @@ li:active:after {
     line-height: 16px;
     letter-spacing: 0em;
     text-align: center;
-
 }
 
 
 /**  Modal **/
-
 .modal_supp h1, .modal_add h1 {
     font-family: "Work Sans";
     font-size: 21px;
@@ -291,9 +277,6 @@ li:active:after {
     color: black;
 }
 .modal_add, .modal_supp {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -303,10 +286,7 @@ li:active:after {
 }
 
 /* Modal de suppression */
-
 .supp_wrapper {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     border: solid black 1px;
@@ -316,19 +296,11 @@ li:active:after {
     height: 525px;
     padding: 30px;
 }
-.header_supp {
-    /* height: 60px; */
-    width: 100%;
-    display: flex;
-    /* justify-content: ; */
-    padding: 32px 36px 15px O;
-}
 .modal_gallery {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-column-gap: 8px;
-	grid-row-gap: 6px;
-    
+	grid-row-gap: 6px;   
 }
 .modal_gallery figure {
     width: 62px;
@@ -342,18 +314,15 @@ li:active:after {
 }
 .modal_gallery figcaption {
     width: 100%;
-    font-family: Work Sans;
+    font-family: "Work Sans";
     font-size: 12px;
     font-weight: 400;
     line-height: 14px;
     letter-spacing: 0em;
     text-align: start;
-
 }
 .modal_supp_controler {
     width: 66%;
-    display: flex;
-    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     border-top: solid #B3B3B3 1px;
@@ -371,7 +340,6 @@ li:active:after {
     cursor: pointer;
     border: none;
 }
-
 .modal_supp span {
     color: rgba(214, 83, 83, 1);
     font-family: "Syne";
@@ -402,7 +370,6 @@ li:active:after {
     margin-top: 4px;
 }
 
-
 /* Bouton fermeture modal */
 .fa-xmark {
     position: relative;
@@ -419,8 +386,6 @@ li:active:after {
 .add_wrapper {
     overflow: auto;
     background-color: #FFFFFF;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     height: 525px;
@@ -431,22 +396,17 @@ li:active:after {
 }
 .header_modal_add {
     width: 100%;
-    display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0;
 }
 .picture {
-    display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    /* position: relative; */
     height: 140px;
     width: 380px;
     background: rgba(232, 241, 246, 1);
     border-radius: 3px;
-    
 }
 .picture img {
     color: rgba(185, 197, 204, 0.8);
@@ -454,9 +414,6 @@ li:active:after {
     opacity: 0.4;
 }
 .picture .picture_input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 31px;
     width: 41%;
     border-radius: 25px;
@@ -478,11 +435,8 @@ li:active:after {
     line-height: 12px;
     letter-spacing: 0em;
     text-align: center;
-
 }
 .add_wrapper .label_position {
-    display: flex;
-    flex-direction: column;
     width: 380px;
     grid-gap: 2px
 }
@@ -495,7 +449,6 @@ li:active:after {
     letter-spacing: 0em;
     text-align: left;
     cursor: pointer;
-
 }
 .modal_add input {
     height: 41px;
@@ -504,7 +457,6 @@ li:active:after {
     border: none;
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
 .modal_add select {
     border: none;
     height: 41px;
@@ -512,11 +464,8 @@ li:active:after {
     background: #FFFFFF;
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
 .modal_add_controler {
     width: 66%;
-    display: flex;
-    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     border-top: solid #B3B3B3 1px;
@@ -535,12 +484,9 @@ li:active:after {
     cursor: pointer;
 }
 
-
 /* Message de confirmation */
 .success_action {
     position: absolute;
-    top: center;
-    left: center;
     padding: 30px;
     background: #FFFFFF;
     border: solid black 1px;
@@ -573,7 +519,6 @@ li:active:after {
 }
 #contact > * {
 	text-align: center;
-
 }
 #contact h2{
 	margin-bottom: 20px;
@@ -581,8 +526,6 @@ li:active:after {
 #contact form {
 	text-align: left;
 	margin-top:30px;
-	display: flex;
-	flex-direction: column;
 }
 #contact input {
 	height: 50px;
