@@ -11,10 +11,10 @@
 	<link rel="stylesheet" href="./assets/login.css">
 </head>
 <body>
-<header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+<header class="flex">
+	<h1 class="flex column">Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
-		<ul>
+		<ul class="flex">
 			<li><a class="projects" href="index.html">projets</a></li>
 			<li>contact</li>
 			<li><a href="login.html">login</a></li>
@@ -23,9 +23,9 @@
 	</nav>
 </header>
 <main>
-	<section>
+	<section class="flexCenter column">
         <h2>Log In</h2>
-        <form methode="POST" class="login_form">
+        <form methode="POST" class="login_form flexCenter column">
             <div class="input_email flex column">
                 <label for="email">E-mail</label>
                 <input id="email" type="email" name="email" required>
@@ -43,7 +43,7 @@
 
 <footer>
 	<nav>
-		<ul>
+		<ul class="flex">
 			<li>Mentions Légales</li>
 		</ul>
 	</nav>
