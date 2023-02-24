@@ -485,25 +485,25 @@ li:active:after {
 }
 
 /* Message de confirmation */
-.success_action {
+.success_action, .confirm_action{
     position: absolute;
+    top: 5%;
     padding: 30px;
     background: #FFFFFF;
     border: solid black 1px;
-    height: 150px;
-    width: 400px;
+    height: 527px;
+    width: 450px;
     font-family: 'Syne';
     font-size: 16px;
     grid-gap: 30px;
     border-radius: 10px;
     text-align: center;
 }
-.btn-ok {
+.btn-ok , .btn-confirm, .btn-cancel {
     font-family: 'Syne';
 	height: 34px;
 	font-weight: 700;
-	color: white;
-    background-color: #1D6154;
+	color: white;  
 	margin : 2em auto ;
 	width: 250px;
 	text-align: center;
@@ -511,6 +511,9 @@ li:active:after {
     cursor: pointer;
     border: none;
 }
+.btn-confirm {background-color: #1D6154;}
+.btn-cancel {background-color: rgb(212, 4, 4);}
+.btn-ok {background-color: #1D6154;}
 
 /* Formulaire de contact */
 #contact {
