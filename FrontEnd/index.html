@@ -49,6 +49,13 @@
 					<button class="open_modal_add" id="open_modal_add">Ajouter une photo</button>
 					<span class="delete_all">Supprimer la galerie</span>
 				</div>
+				<div class="confirm_action flexCenter column" aria-hidden="true" style="display: none">
+					<div class="bloc-position_confrim_action  column">
+						<h3>Supprimer TOUTE la gallerie ?</h3>
+						<button class="btn-confirm flexCenter">OK</button>
+						<button class="btn-cancel flexCenter">Annuler</button>
+					</div>
+				</div>
 			</section>
 
 		</aside>
@@ -62,7 +69,7 @@
 				</header>
 				<h1 class="title_modal_add">Ajout photo</h1>
 
-				<div class="picture flex column" id="Upload_img">
+				<div class="picture flexCenter column" id="Upload_img">
 					<img src="assets/icons/image.png" alt="logo image" id="logo_image"/>
 					<label class="picture_input flexCenter">+ Ajout photo<input class="file_upload" id="image" name="file_upload" type="file" accept=".jpg, .png" required/></label>
 					<p>jpg, png: 4mo max</p>
@@ -88,10 +95,13 @@
 				</div>
 			</form>
 			<!-- aria-hidden="true" style="display: none" -->
-			<div class="success_action column" aria-hidden="true" style="display: none">
-				<h3>Votre élément a été ajouter avec succès</h3>
-				<button class="btn-ok flexCenter">OK</button>
+			<div class="success_action column flexCenter column" aria-hidden="true" style="display: none">
+				<div>
+					<h3>Votre élément a été ajouter avec succès</h3>
+					<button class="btn-ok flexCenter">OK</button>
+				</div>
 			</div>
+
 		</aside>
 
 		<section class="flex" id="introduction">
