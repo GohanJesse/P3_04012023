@@ -170,7 +170,7 @@ function refreshGallery() {
   loadWorks();
 };
 
-// import des travaux dans la modale
+// import des travaux dans la modale (fonction de suppression à l'interieur)
 function getWorks(data) {
   const gallery = document.querySelector(".gallery");
 
@@ -251,9 +251,29 @@ function getWorks(data) {
     }
 
     // Fonctionnailtée de suppression
-    document.querySelector(".delete_all").addEventListener("click", deleteAll);
+    document.querySelector(".delete_all").addEventListener("click", confirmDelete);
+    document.querySelector(".btn-confirm").addEventListener("click", deleteAll);
+    document.querySelector(".btn-confirm").addEventListener("click", closeConfirmDelete);
     deleteIcon.addEventListener("click", deleteElement);
   }
+
+  // Confirmation de la suppression de tout les travaux
+  let confirmMess = null;
+  function confirmDelete() {
+    // Cibler l'élémént message de confirmation
+    const target = document.querySelector(".confirm_action");
+    target.style.display = null;
+    target.removeAttribute("aria-hidden");
+    confirmMess = target;
+    // Fonctionnalité des boutons (OK-Cancel)
+    document.querySelector(".btn-cancel").addEventListener("click", closeConfirmDelete);
+  }
+  function closeConfirmDelete(e) {
+    e.preventDefault();
+    confirmMess.style.display = "none";
+    confirmMess.setAttribute("aria-hidden", "true");
+    confirmMess = null;
+  };
 
   //Création d'élément pour la fonctionnalitée de déplacement
   const moveIcon = document.createElement("div");
@@ -265,7 +285,9 @@ function getWorks(data) {
             `;
   //Rattachement au block parent
   const figure = document.querySelector(".modal_gallery figure");
-  figure.appendChild(moveIcon);
+  if (figure !== null) {
+    figure.appendChild(moveIcon);
+  };
 };
 
 // Ouverture modale de suppression
@@ -435,6 +457,7 @@ function readFile(e) {
   const picture = document.querySelector(".picture");
   const label = document.querySelector(".picture > label");
   const previewImage = document.createElement("img");
+  previewImage.setAttribute("id", "preview_image");
 
   picture.appendChild(previewImage);
 
@@ -464,18 +487,14 @@ function checkForm() {
 function resetForm() {
   formAddWork.reset();
 
-  const picture = document.querySelector(".picture");
-  const previewImage = picture.querySelector("img");
+  const picture = document.querySelector("#Upload_img");
+  const previewImage = picture.querySelector("#preview_image");
   const label = document.querySelector(".picture > label");
 
   if (previewImage) {
     //Enlever l'image de prévisualisation
     picture.removeChild(previewImage);
     label.style.opacity = "1";
-    previewImage.style.position = "";
-    previewImage.style.opacity = "";
-    previewImage.style.padding = "";
-    previewImage.style.height = "";
   };
 };
 
@@ -499,3 +518,4 @@ function closeCheckAction(e) {
   successMess.setAttribute("aria-hidden", "true");
   successMess = null;
 };
+
