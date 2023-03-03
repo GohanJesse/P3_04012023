@@ -172,7 +172,8 @@ function refreshGallery() {
 
 // import des travaux dans la modale (fonction de suppression à l'interieur)
 function getWorks(data) {
-  const gallery = document.querySelector(".gallery");
+  const modalGall = document.querySelector(".modal_gallery");
+  modalGall.innerHTML = "";
 
   // Boucle pour ramener chaque travaux
   for (let i = 0; i < data.length; i++) {
@@ -195,7 +196,7 @@ function getWorks(data) {
     galleryEl.appendChild(figure);
     figure.appendChild(deleteIcon);
 
-    // const id = data[i].id;
+    const id = data[i].id;
     // console.log(deleteIcon.value);
 
     // ******************    Suppression d'un éléments
@@ -331,7 +332,8 @@ function openModalAdd(e) {
   modal.querySelector(".fa-xmark").addEventListener("click", resetForm);
   modal.querySelector(".fa-arrow-left").addEventListener("click", previewArrow);
   modal.querySelector(".fa-arrow-left").addEventListener("click", resetForm);
-  modal.querySelector(".submit_Work").addEventListener("click", addWork);
+  // modal.querySelector(".submit_Work").addEventListener("submit", addWork);
+  modal.querySelector(".submit_Work").addEventListener("click", checkInput);
 };
 
 //Retour modale de suppression
@@ -376,52 +378,42 @@ document.querySelectorAll(".open_modal").forEach((a) => {
 });
 
 // Ajout d'un élément
-function addWork() {
-  //Cibler le formulaire d'ajout
-  const formAddWork = document.querySelector(".form_addWork");
+async function addWork() {
+  // e.preventDefault();
+  
+  // Récupération des saisies pour la création du nouvel élément
+  const inputPicture = document.getElementById("image").files[0];
+  // console.log(inputPicture);
+  const inputTitle = document.getElementById("title").value;
+  // console.log(inputTitle);
+  const inputCategorie = document.getElementById("category").value;
+  // console.log(inputCategorie);
 
-  formAddWork.addEventListener("submit", async function (event) {
-    event.preventDefault();
-    // console.log(event.type);
-    // console.log(event.currentTarget);
-    // Récupération des saisies pour la création du nouvel élément
-    const inputPicture = document.getElementById("image").files[0];
-    // console.log(inputPicture);
-    const inputTitle = document.getElementById("title").value;
-    // console.log(inputTitle);
-    const inputCategorie = document.getElementById("category").value;
-    // console.log(inputCategorie);
+  // Construction du formData à envoyer
+  const formData = new FormData();
+  formData.append("image", inputPicture);
+  formData.append("title", inputTitle);
+  formData.append("category", inputCategorie);
 
-    // Construction du formData à envoyer
-    const formData = new FormData();
-    formData.append("image", inputPicture);
-    formData.append("title", inputTitle);
-    formData.append("category", inputCategorie);
-
-    // Appel de la fonction fetch avec toutes les informations nécessaires
-    let response = await fetch("http://localhost:5678/api/works", {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-      body: formData,
-    });
-    // .then(response => response.json())
-    // console.log(response.status);
-
-    // Récupération de la reponse de fetch "POST"
-    let result = await response.json();
-    // console.log(result);
-
-    // Conditions: Authentification, redirection et erreurs
-    if (response.status === 200 || 204) {
-      refreshGallery();
-      checkAction();
-
-    } else if (response.status === 401 || 400) {
-      console.log("Action impossible");
-    }
+  // Appel de la fonction fetch avec toutes les informations nécessaires
+  let response = await fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+    body: formData,
   });
+  // console.log(response.status);
+  // console.log(result);
+
+  // Conditions: Authentification, redirection et erreurs
+  if (response.status === 200 || 204) {
+      
+    refreshGallery();
+    return checkAction();
+  } else if (response.status === 401 || 400) {
+    console.log("Action impossible");
+  };
 };
 
 
@@ -433,7 +425,8 @@ const inputElement = document.querySelector("#title");
 const selectElement = document.querySelector("#category");
 const fileInputElement = document.querySelector("#image");
 const submitButton = document.querySelector("#submit_work");
-const inputFile = document.querySelector(".file_upload");
+const inputFile = document.querySelector("#image");
+
 
 // Listener des actions des éléments du formulaire
 inputFile.addEventListener("change", readFile);
@@ -463,12 +456,42 @@ function readFile(e) {
 
   label.style.opacity = "0";
   previewImage.style.position = "absolute";
+  previewImage.style.objectFit = "contain";
   previewImage.style.opacity = "1";
   previewImage.style.padding = "0";
   previewImage.style.height = "140px";
 };
 
 // Fonction pour vérifier si tous les éléments requis ont une valeur
+function checkInput(e) {
+  e.preventDefault();
+
+  // cibler les messages
+  const errMessImg = document.querySelector("#error-img");
+  const errMessTitle = document.querySelector("#error-title");
+  const errMessCat = document.querySelector("#error-category");
+
+  // condition de validation
+  if (
+    inputElement.value !== "" &&
+    selectElement.value !== "" &&
+    fileInputElement.value !== ""
+  ) {
+    addWork();
+  }
+  if (inputFile.value == "") {
+    errMessImg.innerHTML = "";
+    errMessImg.innerHTML = "Image obligatoire";
+  }  else if (inputElement.value == "") {
+    errMessTitle.innerHTML = "";
+    errMessTitle.innerHTML = "Titre obligatoire";
+  } else if (selectElement.value == "") {
+    errMessCat.innerHTML = "";
+    errMessCat.innerHTML = "Catégorie obligatoire";
+  };
+};
+
+// Changement de couleur du bouton valider
 function checkForm() {
   if (
     inputElement.value !== "" &&
@@ -509,7 +532,6 @@ function checkAction() {
   successMess = target;
   // Fonctionnalité du bouton ok pour se rediriger
   successMess.querySelector(".btn-ok").addEventListener("click", resetForm);
-  successMess.querySelector(".btn-ok").addEventListener("click", previewArrow);
   successMess.querySelector(".btn-ok").addEventListener("click", closeCheckAction);
 };
 function closeCheckAction(e) {
@@ -517,5 +539,7 @@ function closeCheckAction(e) {
   successMess.style.display = "none";
   successMess.setAttribute("aria-hidden", "true");
   successMess = null;
+  refreshGallery();
+  resetForm();
 };
 
