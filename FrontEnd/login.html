@@ -28,11 +28,13 @@
         <form methode="POST" class="login_form flexCenter column">
             <div class="input_email flex column">
                 <label for="email">E-mail</label>
-                <input id="email" type="email" name="email" required>
+                <input id="email" type="text" name="email">
+				<span id="error-mail"></span>
             </div>
             <div class="input_password flex column">
                 <label for="password">Mot de passe</label>
-                <input id="password" type="password" name="password" required minlength="6" maxlength="12">
+                <input id="password" type="password" name="password">
+				<span id="error-pass"></span>
             </div>
             <input type="submit" value="Se connecter" id="submit">
             <span><a href="#">Mots de passe oublié</a></span>
