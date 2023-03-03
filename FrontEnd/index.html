@@ -62,7 +62,7 @@
 
 		<!-- Modal Ajout -->
 		<aside class="modal_add flexCenter" id="modal_add" aria-hidden="true" style="display: none">
-			<form class="add_wrapper flex column js_modal_stop form_addWork" method="POST" >
+			<form class="add_wrapper flex column js_modal_stop form_addWork"  >
 				<header class="header_modal_add flex">
 					<i class="fa-sharp fa-solid fa-arrow-left fa-lg"></i>
 					<i class="fa-solid fa-xmark fa-lg"></i>
@@ -71,24 +71,27 @@
 
 				<div class="picture flexCenter column" id="Upload_img">
 					<img src="assets/icons/image.png" alt="logo image" id="logo_image"/>
-					<label class="picture_input flexCenter">+ Ajout photo<input class="file_upload" id="image" name="file_upload" type="file" accept=".jpg, .png" required/></label>
+					<label class="picture_input flexCenter">+ Ajout photo<input class="file_upload" id="image" name="file_upload" type="file" accept=".jpg, .png"/></label>
 					<p>jpg, png: 4mo max</p>
 				</div>
+				<span id="error-img"></span>
 
 				<div class="label_position flex column">
 					<label for="title_picture">Titre</label>
-					<input type="text" id="title" name="title_picture" required />
+					<input type="text" id="title" name="title_picture"/>
 				</div>
+				<span id="error-title"></span>
 
 				<div class="label_position">
 					<label for="category">Catégorie</label>
-					<select name="modal_category" id="category" required>
+					<select name="modal_category" id="category">
 						<option value=""></option>
 						<option id="object_option" value="1">objet</option>
 						<option id="Apartement_option" value="2">Appartement</option>
 						<option id="hotel_restaurant_option" value="3">hôtel & restaurant</option>
 					</select>
 				</div>
+				<span id="error-category"></span>
 
 				<div class="modal_add_controler flex column">
 					<button type="submit" class="submit_Work" id="submit_work">Valider</button>
